@@ -4,6 +4,8 @@ import {
 import Home from "../Homes/Home";
 import HomeLayout from "../Homes/HomeLayout";
 import Blog from "../blog/Blog";
+import Login from "../login/Login";
+import Ragister from "../ragister/Ragister";
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +19,14 @@ export const router = createBrowserRouter([
         {
             path:"blog",
             element:<Blog/>,
+        },
+        {
+            path:"login",
+            element:<Login/>,
+        },
+        {
+            path:"ragister",
+            element:<Ragister/>,
         },
       ]
     },

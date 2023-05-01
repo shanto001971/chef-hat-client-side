@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <div className='mt-5 border flex justify-around shadow-lg items-center p-5'>
-            <h1>Make <span className='text-yellow-400'>Chef</span></h1>
+            <h1 className='text-3xl'>Make <span className='text-yellow-400'>Chef</span></h1>
             <div className=" flex gap-5">
                 <NavLink className={({ isActive })=>isActive?"text-blue-600":''} to="/">Home</NavLink>
                 <NavLink className={({ isActive })=>isActive?"text-blue-600":''} to="/blog">Blog</NavLink>
