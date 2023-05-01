@@ -6,6 +6,7 @@ import HomeLayout from "../Homes/HomeLayout";
 import Blog from "../blog/Blog";
 import Login from "../login/Login";
 import Ragister from "../ragister/Ragister";
+import ViewDetails from "../viewDetails/ViewDetails";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,11 @@ export const router = createBrowserRouter([
         {
             path:"ragister",
             element:<Ragister/>,
+        },
+        {
+            path:"data/:id",
+            element:<ViewDetails/>,
+            loader:({params})=>fetch(`http://localhost:5000/data/${params.id}`)
         },
       ]
     },

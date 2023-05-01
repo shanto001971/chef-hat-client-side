@@ -3,10 +3,8 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='p-2 bg-slate-400'>
-            <div className="text-center mt-5">
-                <h1>
-                A chef is a professional <br /> cook and tradesman who is proficient in <br /> all aspects of food preparation, often focusing on <br /> a particular cuisine.etc?
-                </h1>
+            <div className="text-center mt-5 p-20">
+               
             </div>
             <div className=" mt-5 lg:flex justify-between">
                 <div className="">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ViweData from '../ViweData/ViweData';
+import { FaBeer,FaSearch } from 'react-icons/fa';
 
 const Home = () => {
     const [chefData, setChefData] = useState([])
@@ -13,10 +14,13 @@ const Home = () => {
 
     return (
         <div className=''>
+            <div style={{backgroundImage: `url("https://pikwizard.com/pw/small/ffc0672f15697ae9b994f7ee2b3ee9eb.jpg")`}} className="bg-cover h-96 bg-no-repeat mb-5 text-center">
             <div className="">
-                
+            <input type="text" placeholder="Type here" className="input w-full max-w-xs my-48" />
+            <button className=' p-4'><FaSearch className='w-10 text-white' /></button>
             </div>
-            <div className="grid grid-rows-2 grid-flow-col gap-4">
+            </div>
+            <div className="lg:grid grid-rows-2 grid-flow-col gap-4">
             {
                 chefData.slice(0,6).map(chef=><ViweData key={chef.id} chef={chef} />)
             }
