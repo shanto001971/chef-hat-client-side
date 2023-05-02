@@ -29,9 +29,9 @@ const AuthProvaider = ({children}) => {
 
 
     useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-            console.log('state Objerver', loggedUser)
-            setUser(loggedUser);
+        const unsubscribe = onAuthStateChanged(auth, logedUser => {
+            console.log('state Objerver', logedUser)
+            setUser(logedUser);
         })
 
         return () => {

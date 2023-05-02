@@ -5,8 +5,8 @@ import { FaBeer, FaGithub, FaGoogle, FaSearch } from 'react-icons/fa';
 
 const Ragister = () => {
 
-    const { createUser,googleSingIn } = useContext(AuthContex)
-    const [user, setUser] = useState("")
+    const { createUser,googleSingIn,setUser } = useContext(AuthContex)
+    
     const [errors, setErrors] = useState('')
 
     const handelRagister = (event) => {
@@ -30,7 +30,7 @@ const Ragister = () => {
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
-                setUser("Go to login")
+                setUser(user)
                 form.reset()
 
 
@@ -57,7 +57,7 @@ const Ragister = () => {
 
     return (
         <div className="mt-2 text-center">
-            <p className='text-5xl m-5'>{user}</p>
+            <p className='text-5xl m-5'></p>
             <form onSubmit={handelRagister} className='text-center  bg-slate-300 p-20'>
                 <h1 className='text-3xl mb-4'>Ragister</h1>
                 <div className="">

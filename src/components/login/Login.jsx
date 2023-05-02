@@ -22,9 +22,7 @@ const Login = () => {
 
         })
         .catch((error)=>{
-           
-            setErrMassage(error.message);
-            console.log(error.message);
+            console.log(error);
         })
 
         

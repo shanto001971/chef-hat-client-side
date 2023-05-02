@@ -8,9 +8,9 @@ const PraivetRoute = ({ children }) => {
 
 
     if (!user) {
-        return children;
+        return  <Navigate to="/ragister" ></Navigate>;
     }
-    return  <Navigate to="/ragister" ></Navigate>
+    return  children;
 };
 
 export default PraivetRoute;
