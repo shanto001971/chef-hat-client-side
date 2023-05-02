@@ -1,22 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { FaBeer, FaGithub, FaGoogle, FaSearch } from 'react-icons/fa';
 
 const Ragister = () => {
 
-    const { createUser } = useContext(AuthContex)
+    const { createUser,googleSingIn } = useContext(AuthContex)
+    const [user, setUser] = useState("")
     const [errors, setErrors] = useState('')
 
     const handelRagister = (event) => {
         event.preventDefault();
-        
-        
+
+
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        if (!password == confirmPassword) {
+        const photo = form.photo.value;
+        if (!password === confirmPassword) {
             setErrors('password dosnt match')
             return
         }
@@ -27,32 +30,59 @@ const Ragister = () => {
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
+                setUser("Go to login")
                 form.reset()
-                console.log(user)
+
+
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error.message)
             })
+
+            
+
+
     }
+    const googleRagister =()=>{
+        googleSingIn()
+        .then((result)=>{
+            console.log(result.user)
+        })
+        .catch((err)=>{
+            console.log(err.message)
+        })
+    }
+
+
+
     return (
-        <div className="">
-            <form onSubmit={handelRagister} className='text-center my-20 bg-slate-300 p-20'>
+        <div className="mt-2 text-center">
+            <p className='text-5xl m-5'>{user}</p>
+            <form onSubmit={handelRagister} className='text-center  bg-slate-300 p-20'>
+                <h1 className='text-3xl mb-4'>Ragister</h1>
                 <div className="">
                     <input type="text" name='name' placeholder="Your Name" className="input w-full max-w-xs border border-spacing-11 " />
                     <br />
-                    <input type="email" name='email' placeholder="Your Email" className="input w-full max-w-xs mt-10" />
+                    <input type="email" name='email' placeholder="Your Email" className="input w-full max-w-xs mt-10" required />
                     <br />
-                    <input type="password" name='password' placeholder="Password" className="input w-full max-w-xs mt-10" />
+                    <input type="password" name='password' placeholder="Password" className="input w-full max-w-xs mt-10" required />
                     <br />
-                    <input type="Password" name='confirmPassword' placeholder="Confirm Password" className="input w-full max-w-xs mt-10" />
+                    <input type="Password" name='confirmPassword' placeholder="Confirm Password" className="input w-full max-w-xs mt-10" required />
                     <br />
-                    
+                    <input type="text" name='photo' placeholder="Photo Url" className="input w-full max-w-xs mt-10" />
+                    <br />
+
                     <button type="submit" className='btn btn-info w-40 mt-5'>Submit</button>
 
                     <p className='mt-2'>Alrady have a accoutn <Link to="/login" className='link'>Login</Link></p>
+
                 </div>
             </form>
-            <p>{errors}</p>
+            <div className="">
+                <button onClick={googleRagister} className='flex gap-2 items-center justify-center mx-auto border p-2 rounded'><FaGoogle /> Login With Google</button>
+                <button className='flex gap-2 items-center justify-center mx-auto mt-3 border p-2 rounded'><FaGithub /> Login With Github</button>
+            </div>
+
         </div>
     );
 };

@@ -7,10 +7,10 @@ const PraivetRoute = ({ children }) => {
     // console.log(user)
 
 
-    if (user) {
-        return <Navigate to="/ragister" />
+    if (!user) {
+        return children;
     }
-    return children
+    return  <Navigate to="/ragister" ></Navigate>
 };
 
 export default PraivetRoute;
