@@ -3,8 +3,9 @@ import { Link, Navigate } from 'react-router-dom';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
 
 const Login = () => {
-    const {errMassage,setErrMassage}=useState("");
+    
     const{loginUser, setUser,user}=useContext(AuthContex);
+    const {errMassage,setErrMassage}=useState("");
 
 
     const handelLogin=(event)=>{
@@ -22,7 +23,7 @@ const Login = () => {
         })
         .catch((error)=>{
            
-            setErrMassage(error);
+            setErrMassage(error.message);
             console.log(error.message);
         })
 
