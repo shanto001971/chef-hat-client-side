@@ -3,9 +3,9 @@ import { useLoaderData } from 'react-router-dom';
 
 const ViewDetails = () => {
     const data = useLoaderData()
-    const {picture,name}=data;
+    const {picture,name,id}=data;
     const {cooking_method,ingredients}=data.recipes;
-    console.log(data)
+    // console.log(data)
     return (
         <div className="card w-full glass">
             <figure><img className='w-full h-auto' src={picture} alt="car!" /></figure>
