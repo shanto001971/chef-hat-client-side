@@ -51,9 +51,11 @@ const Login = () => {
             })
     }
     return (
-        <div className="">
-
-            <form onSubmit={handelLogin} className='text-center my-20 bg-slate-300 p-20'>
+        <div className="bg-slate-300 p-20">
+            {
+                user&& <Navigate to="/" />
+            }
+            <form onSubmit={handelLogin} className='text-center my-20 '>
                 <h1 className='text-3xl mb-4'>Login</h1>
                 <div className="">
                     <input type="email" name='email' placeholder="Your Email" className="input w-full max-w-xs mt-10" />
@@ -69,8 +71,8 @@ const Login = () => {
                 <p>{ errMassage}</p>
             </div>
             <div className="">
-                <button onClick={googleRagister} className='flex gap-2 items-center justify-center mx-auto border p-2 rounded'><FaGoogle /> Login With Google</button>
-                <button onClick={githubLoginProvider} className='flex gap-2 items-center justify-center mx-auto mt-3 border p-2 rounded'><FaGithub /> Login With Github</button>
+                <button onClick={googleRagister} className='flex gap-2 items-center justify-center mx-auto border p-2 rounded hover:bg-blue-400'><FaGoogle /> Login With Google</button>
+                <button onClick={githubLoginProvider} className='flex gap-2 items-center justify-center mx-auto mt-3 border p-2 rounded hover:bg-blue-400'><FaGithub /> Login With Github</button>
             </div>
 
         </div>

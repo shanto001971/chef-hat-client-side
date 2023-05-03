@@ -20,6 +20,7 @@ const Home = () => {
                 <div className="">
                     <input type="text" placeholder="Type here" className="input w-full max-w-xs my-48" />
                     <button className=' p-4'><FaSearch className='w-10 text-white' /></button>
+                    
                 </div>
             </div>
             <div className="lg:grid grid-rows-2 grid-flow-col gap-4">
