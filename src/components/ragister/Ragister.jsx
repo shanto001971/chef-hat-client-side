@@ -5,9 +5,9 @@ import { FaBeer, FaGithub, FaGoogle, FaSearch } from 'react-icons/fa';
 
 const Ragister = () => {
 
-    const { createUser,setUser } = useContext(AuthContex)
-    
-    const [errors, setErrors] = useState('')
+    const { createUser, setUser } = useContext(AuthContex)
+
+    const [errors, setErrors] = useState('');
 
     const handelRagister = (event) => {
         event.preventDefault();
@@ -19,7 +19,7 @@ const Ragister = () => {
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
         const photo = form.photo.value;
-        if (!password === confirmPassword) {
+        if ( !password === confirmPassword) {
             setErrors('password dosnt match')
             return
         }
@@ -31,19 +31,20 @@ const Ragister = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user)
+                setErrors('')
                 form.reset()
 
 
             })
             .catch((error) => {
-                console.log(error.message)
+                setErrors(error.message)
             })
 
-            
+
 
 
     }
-    
+
 
 
 
@@ -63,6 +64,9 @@ const Ragister = () => {
                     <br />
                     <input type="text" name='photo' placeholder="Photo Url" className="input w-full max-w-xs mt-10" />
                     <br />
+                    <div className="text-center mb-5 text-red-500 mt-5">
+                        <p>{errors}</p>
+                    </div>
 
                     <button type="submit" className='btn btn-info w-40 mt-5'>Submit</button>
 

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
+import { FaThumbsUp } from 'react-icons/fa';
 
 const ViweData = ({ chef }) => {
     // console.log(chef)
@@ -14,7 +15,7 @@ const ViweData = ({ chef }) => {
                 <h2 className="card-title">Name: {name}</h2>
                 <li>Number of recipes: {num_recipes}</li>
                 <li>Years of experience: {years_of_experience}</li>
-                <li>Like {likes}</li>
+                <li className='flex gap-2'><FaThumbsUp/> {likes}</li>
                 
                 <div className="card-actions justify-end ">
                     <button className="btn btn-primary w-full mt-5"><Link to={`/data/${id}`}>View Recipes</Link></button>

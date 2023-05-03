@@ -6,7 +6,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 const Login = () => {
 
     const { loginUser, setUser, user, googleSingIn, githubLogin } = useContext(AuthContex);
-    const { errMassage, setErrMassage } = useState("");
+    const [errMassage, setErrMassage] = useState('');
 
 
     const handelLogin = (event) => {
@@ -15,7 +15,6 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
         loginUser(email, password)
             .then((result) => {
                 setUser(result.user);
@@ -23,19 +22,19 @@ const Login = () => {
 
             })
             .catch((error) => {
-                console.log(error);
+                setErrMassage(error.message);
             })
-
-
-
-
     }
+
+
     const githubLoginProvider = () => {
         githubLogin()
             .then((result) => {
-                setUser(result.user)
+                setUser(result.user);
+                setErrMassage('')
             })
             .catch((err) => {
+                console.log(err.message);
                 setErrMassage(err.message)
             })
     }
@@ -44,10 +43,11 @@ const Login = () => {
     const googleRagister = () => {
         googleSingIn()
             .then((result) => {
-                console.log(result.user)
+                setUser(result.user)
+                setErrMassage('')
             })
             .catch((err) => {
-                console.log(err.message)
+                setErrMassage(err.message)
             })
     }
     return (
@@ -67,8 +67,8 @@ const Login = () => {
                     <p className='mt-2'>New to  <Link to="/ragister" className='link'>Ragister</Link></p>
                 </div>
             </form>
-            <div className="">
-                <p>{ errMassage}</p>
+            <div className="text-center mb-5 text-red-500">
+                <p>{errMassage}</p>
             </div>
             <div className="">
                 <button onClick={googleRagister} className='flex gap-2 items-center justify-center mx-auto border p-2 rounded hover:bg-blue-400'><FaGoogle /> Login With Google</button>
