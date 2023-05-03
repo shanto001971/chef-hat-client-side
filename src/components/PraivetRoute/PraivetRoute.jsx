@@ -8,7 +8,7 @@ const PraivetRoute = ({ children }) => {
 
 
     if (!user) {
-        return  <Navigate to="/ragister" ></Navigate>;
+        return  <Navigate to="/login" ></Navigate>;
     }
     return  children;
 };

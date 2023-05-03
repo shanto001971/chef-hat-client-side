@@ -8,11 +8,13 @@ import Login from "../login/Login";
 import Ragister from "../ragister/Ragister";
 import ViewDetails from "../viewDetails/ViewDetails";
 import PraivetRoute from "../PraivetRoute/PraivetRoute";
+import ErrorPage from "../errorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path: "/",

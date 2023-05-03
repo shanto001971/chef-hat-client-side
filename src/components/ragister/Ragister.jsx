@@ -5,7 +5,7 @@ import { FaBeer, FaGithub, FaGoogle, FaSearch } from 'react-icons/fa';
 
 const Ragister = () => {
 
-    const { createUser,googleSingIn,setUser } = useContext(AuthContex)
+    const { createUser,setUser } = useContext(AuthContex)
     
     const [errors, setErrors] = useState('')
 
@@ -43,15 +43,7 @@ const Ragister = () => {
 
 
     }
-    const googleRagister =()=>{
-        googleSingIn()
-        .then((result)=>{
-            console.log(result.user)
-        })
-        .catch((err)=>{
-            console.log(err.message)
-        })
-    }
+    
 
 
 
@@ -78,10 +70,6 @@ const Ragister = () => {
 
                 </div>
             </form>
-            <div className="">
-                <button onClick={googleRagister} className='flex gap-2 items-center justify-center mx-auto border p-2 rounded'><FaGoogle /> Login With Google</button>
-                <button className='flex gap-2 items-center justify-center mx-auto mt-3 border p-2 rounded'><FaGithub /> Login With Github</button>
-            </div>
 
         </div>
     );

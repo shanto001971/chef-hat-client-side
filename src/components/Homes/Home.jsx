@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import ViweData from '../ViweData/ViweData';
 import { FaBeer, FaSearch } from 'react-icons/fa';
 import Banner from '../Banner/Banner';
+import ThardBanner from '../Banner/ThardBanner';
 
 const Home = () => {
     const [chefData, setChefData] = useState([])
@@ -33,6 +34,9 @@ const Home = () => {
                     chefData.slice(6, 10).map(chef => <ViweData key={chef.id} chef={chef} />)
 
                 }
+            </div>
+            <div className="">
+                <ThardBanner/>
             </div>
         </div>
     );
