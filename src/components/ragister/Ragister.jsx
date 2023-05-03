@@ -5,7 +5,9 @@ import { FaBeer, FaGithub, FaGoogle, FaSearch } from 'react-icons/fa';
 
 const Ragister = () => {
 
-    const { createUser, setUser } = useContext(AuthContex)
+    const { createUser, setUser, profileUpgrade } = useContext(AuthContex)
+
+    const [massage, setMassage] = useState('');
 
     const [errors, setErrors] = useState('');
 
@@ -19,7 +21,7 @@ const Ragister = () => {
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
         const photo = form.photo.value;
-        if ( !password === confirmPassword) {
+        if (!password === confirmPassword) {
             setErrors('password dosnt match')
             return
         }
@@ -27,17 +29,27 @@ const Ragister = () => {
             setErrors("password mast be 6 character")
             return
         }
+        setUser({})
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
                 setUser(user)
                 setErrors('')
+                setMassage('Go to Login')
                 form.reset()
 
 
             })
             .catch((error) => {
                 setErrors(error.message)
+            })
+
+        profileUpgrade(name, photo)
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((err) => {
+                console.log(err.message)
             })
 
 
@@ -67,7 +79,7 @@ const Ragister = () => {
                     <div className="text-center mb-5 text-red-500 mt-5">
                         <p>{errors}</p>
                     </div>
-
+                    <p>{massage}</p>
                     <button type="submit" className='btn btn-info w-40 mt-5'>Submit</button>
 
                     <p className='mt-2'>Alrady have a accoutn <Link to="/login" className='link'>Login</Link></p>

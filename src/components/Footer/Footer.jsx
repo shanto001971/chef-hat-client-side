@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCopyright } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -14,8 +15,8 @@ const Footer = () => {
                     <h1>When Carl has the chance to serve <br /> prestigious food critic and blogger <br /> Ramsey Michel, Riva demands he prepare <br />  old favorites at the last minute; Carl concedes, <br /> leading to a scathing review.</h1>
                 </div>
             </div>
-            <div className="border text-center mt-5 p-5">
-                <h1>Copy right by Make Chafe</h1>
+            <div className="border text-center  mt-5 p-5">
+                <h1 className=''> Copy right by Chafe Hat</h1>
             </div>
         </div>
     );

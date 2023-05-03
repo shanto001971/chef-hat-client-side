@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
         element: <PraivetRoute>
           <ViewDetails />
         </PraivetRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/data/${params.id}`)
+        loader: ({ params }) => fetch(` https://make-chef-sarver-site-shanto001971.vercel.app/data/${params.id}`)
       },
     ]
   },

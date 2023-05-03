@@ -1,27 +1,27 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from '../../firebase/Firebase.config';
 import { GithubAuthProvider } from "firebase/auth";
 
 
 export const AuthContex = createContext(null);
 const auth = getAuth(app);
-const AuthProvaider = ({children}) => {
-    const [user,setUser]=useState({})
+const AuthProvaider = ({ children }) => {
+    const [user, setUser] = useState({})
 
-    const createUser = (email, password)=>{
+    const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
-    const loginUser =(email, password)=>{
+    const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const logOutUser=()=>{
+    const logOutUser = () => {
         return signOut(auth)
     }
 
     const googleAuth = new GoogleAuthProvider()
-    const googleSingIn =()=>{
-       return signInWithPopup(auth,googleAuth)
+    const googleSingIn = () => {
+        return signInWithPopup(auth, googleAuth)
     }
 
     const logOut = () => {
@@ -29,7 +29,7 @@ const AuthProvaider = ({children}) => {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, logedUser => {
             console.log('state Objerver', logedUser)
             setUser(logedUser);
@@ -43,12 +43,18 @@ const AuthProvaider = ({children}) => {
 
     const provider = new GithubAuthProvider();
 
-    const githubLogin =()=>{
-        return signInWithPopup(auth,provider);
+    const githubLogin = () => {
+        return signInWithPopup(auth, provider);
+    }
+
+    const profileUpgrade = (Name, photo) => {
+       return updateProfile(auth.currentUser, {
+            displayName: Name, photoURL: photo,
+        })
     }
 
 
-    const authinfo ={
+    const authinfo = {
         createUser,
         loginUser,
         logOutUser,
@@ -56,13 +62,14 @@ const AuthProvaider = ({children}) => {
         setUser,
         googleSingIn,
         logOut,
-        githubLogin
+        githubLogin,
+        profileUpgrade
 
     }
     return (
-       <AuthContex.Provider value={authinfo} >
-        {children}
-       </AuthContex.Provider>
+        <AuthContex.Provider value={authinfo} >
+            {children}
+        </AuthContex.Provider>
     );
 };
 

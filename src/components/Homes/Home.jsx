@@ -8,7 +8,7 @@ import ThardBanner from '../Banner/ThardBanner';
 const Home = () => {
     const [chefData, setChefData] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/')
+        fetch(' https://make-chef-sarver-site-shanto001971.vercel.app')
             .then(res => res.json())
             .then(data => setChefData(data))
     }, [])
