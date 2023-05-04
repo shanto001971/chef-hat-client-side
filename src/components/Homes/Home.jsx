@@ -21,7 +21,6 @@ const Home = () => {
     if (loading) {
         return <Loading></Loading>
     }
-
     return (
         <div className=''>
             <div style={{ backgroundImage: `url("https://pikwizard.com/pw/small/ffc0672f15697ae9b994f7ee2b3ee9eb.jpg")` }} className="bg-cover h-96 bg-no-repeat text-center   md:filter-none">
