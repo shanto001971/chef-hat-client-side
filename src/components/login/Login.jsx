@@ -36,6 +36,7 @@ const Login = () => {
             .then((result) => {
                 setUser(result.user);
                 setErrMassage('')
+                navigate( from, {replace: true})
             })
             .catch((err) => {
                 console.log(err.message);
@@ -49,6 +50,7 @@ const Login = () => {
             .then((result) => {
                 setUser(result.user)
                 setErrMassage('')
+                navigate( from, {replace: true})
             })
             .catch((err) => {
                 setErrMassage(err.message)
