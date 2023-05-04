@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
 import { Link, Navigate } from 'react-router-dom';
-import { FaBeer, FaGithub, FaGoogle, FaSearch } from 'react-icons/fa';
+
 
 const Ragister = () => {
 

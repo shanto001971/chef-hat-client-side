@@ -12,11 +12,7 @@ import RecipesCard from '../recipesCard/RecipesCard';
 const ViewDetails = () => {
     const data = useLoaderData()
     const { picture, name, bio, likes, num_recipes, years_of_experience, recipes } = data;
-    const { cooking_method, ingredients } = data.recipes;
-    console.log(data)
-    const handelFavrite = () => {
-        toast("Add to Favorite")
-    }
+    
     return (
         <div className="card w-full glass">
             <figure><img className='w-full h-auto rounded-md' src={picture} alt="car!" /></figure>
@@ -30,7 +26,7 @@ const ViewDetails = () => {
 
             <div className="lg:grid grid-rows-1 grid-flow-col gap-4">
                 {
-                    recipes?.map((singledata, index) => <RecipesCard index={index} singledata={singledata} />)
+                    recipes?.map((singledata, index) => <RecipesCard key={index} singledata={singledata} />)
                 }
             </div>
         </div>
