@@ -10,12 +10,12 @@ const Home = () => {
     const [loading, setLoading] = useState(true)
     const [chefData, setChefData] = useState([])
 
-
+    
     useEffect(() => {
         fetch('https://make-chef-sarver-site-shanto001971.vercel.app/data')
             .then(res => res.json())
             .then(data => setChefData(data))
-        setLoading(false)
+            setLoading(false)
     }, [])
 
     if (loading) {
@@ -28,7 +28,7 @@ const Home = () => {
                 <div className="">
                     <input type="text" placeholder="Type here" className="input w-full max-w-xs my-48" />
                     <button className=' p-4'><FaSearch className='w-10 text-white' /></button>
-
+                    
                 </div>
             </div>
             <div className="lg:grid grid-rows-2 grid-flow-col gap-4">
@@ -45,13 +45,8 @@ const Home = () => {
                 }
             </div>
             <div className="">
-                <ThardBanner />
+                <ThardBanner/>
             </div>
-
-
-
-
-
             
         </div>
     );
