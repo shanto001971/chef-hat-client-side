@@ -24,10 +24,11 @@ const Home = () => {
 
     return (
         <div className=''>
-            <div style={{ backgroundImage: `url("https://pikwizard.com/pw/small/ffc0672f15697ae9b994f7ee2b3ee9eb.jpg")` }} className="bg-cover h-96 bg-no-repeat mb-5 text-center">
+            <div style={{ backgroundImage: `url("https://pikwizard.com/pw/small/ffc0672f15697ae9b994f7ee2b3ee9eb.jpg")` }} className="bg-cover h-96 bg-no-repeat text-center blur-md invert brightness-150 md:filter-none">
                 <div className="">
                     <input type="text" placeholder="Type here" className="input w-full max-w-xs my-48" />
                     <button className=' p-4'><FaSearch className='w-10 text-white' /></button>
+                    
                     
                 </div>
             </div>
