@@ -3,10 +3,10 @@ import { toast } from 'react-hot-toast';
 import { FaRegStar } from 'react-icons/fa';
 import ReactStarsRating from 'react-awesome-stars-rating';
 
-const RecipesCard = ({ singledata }) => {
+const RecipesCard = ({ singledata, data }) => {
     const [favorite, setFavorite] = useState({});
     const [toogle,setToogle]=useState(false);
-    const { recipe_name, ingredients, cooking_method,rating } = singledata;
+    const { recipe_name, ingredients, cooking_method } = singledata;
     // console.log(singledata)
 
     const handelFavroite = (singledata) => {
@@ -27,7 +27,7 @@ const RecipesCard = ({ singledata }) => {
                     }
                 </div>
                 <small>{cooking_method}</small>
-                <ReactStarsRating className="flex" value={rating} />
+                <ReactStarsRating className="flex" isEdit={false} value={data.rating} />
                 <div className="card-actions justify-end mt-3">
                     <button disabled={toogle} onClick={() => handelFavroite(singledata)} className="btn btn-primary flex gap-2"><FaRegStar />Add to Favorite</button>
                 </div>

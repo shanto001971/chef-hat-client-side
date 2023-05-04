@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaRegStar, FaThumbsUp } from "react-icons/fa";
 import '@fontsource/roboto/300.css';
@@ -7,11 +7,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { toast } from 'react-hot-toast';
 import RecipesCard from '../recipesCard/RecipesCard';
+import Loading from '../Loading/Loading';
 
 
 const ViewDetails = () => {
     const data = useLoaderData()
     const { picture, name, bio, likes, num_recipes, years_of_experience, recipes } = data;
+    console.log(data)
     
     return (
         <div className="card w-full glass">
@@ -26,7 +28,7 @@ const ViewDetails = () => {
 
             <div className="lg:grid grid-rows-1 grid-flow-col gap-4">
                 {
-                    recipes?.map((singledata, index) => <RecipesCard key={index} singledata={singledata} />)
+                    recipes?.map((singledata, index) => <RecipesCard key={index} singledata={singledata} data={data} />)
                 }
             </div>
         </div>

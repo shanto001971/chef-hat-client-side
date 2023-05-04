@@ -16,7 +16,7 @@ const Header = () => {
             {
                 user ? <div className='flex gap-3'>
 
-                    <img title={user?.displayName} className='w-10 bg-slate-400 rounded-full' src={user?.photoURL || "https://www.banq.qc.ca/sites/default/files/2022-06/icone_profil_generique.jpg"} alt="" />
+                    <img title={user?.displayName} className='w-10 h-10 rounded-full' src={user?.photoURL} alt="" />
                     <button onClick={() => logOut()} className="btn btn-primary">Logout</button>
                 </div>
                     : <Link to="/login"><button className="btn btn-primary">Login</button></Link>

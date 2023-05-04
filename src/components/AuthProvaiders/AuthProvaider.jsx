@@ -46,10 +46,8 @@ const AuthProvaider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
-    const profileUpgrade = (Name, photo) => {
-       return updateProfile(auth.currentUser, {
-            displayName: Name, photoURL: photo,
-        })
+    const profileUpgrade = (profile) => {
+       return updateProfile(auth.currentUser, profile);
     }
 
 

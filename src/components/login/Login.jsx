@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
@@ -7,6 +7,9 @@ const Login = () => {
 
     const { loginUser, setUser, user, googleSingIn, githubLogin } = useContext(AuthContex);
     const [errMassage, setErrMassage] = useState('');
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
 
 
     const handelLogin = (event) => {
@@ -19,6 +22,7 @@ const Login = () => {
             .then((result) => {
                 setUser(result.user);
                 form.reset();
+                navigate( from, {replace: true})
 
             })
             .catch((error) => {
@@ -52,9 +56,7 @@ const Login = () => {
     }
     return (
         <div className="bg-slate-300 p-20">
-            {
-                user&& <Navigate to="/" />
-            }
+            
             <form onSubmit={handelLogin} className='text-center my-20 '>
                 <h1 className='text-3xl mb-4'>Login</h1>
                 <div className="">

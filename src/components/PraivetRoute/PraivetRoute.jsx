@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PraivetRoute = ({ children }) => {
     const { user } = useContext(AuthContex);
     // console.log(user)
+    const location = useLocation();
 
 
     if (!user) {
-        return  <Navigate to="/login" ></Navigate>;
+        return  <Navigate state={{from: location}} to="/login" replace ></Navigate>;
     }
     return  children;
 };

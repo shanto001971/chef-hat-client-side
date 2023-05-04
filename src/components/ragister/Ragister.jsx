@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContex } from '../AuthProvaiders/AuthProvaider';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 
 const Ragister = () => {
@@ -10,17 +10,23 @@ const Ragister = () => {
     const [massage, setMassage] = useState('');
 
     const [errors, setErrors] = useState('');
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
 
     const handelRagister = (event) => {
         event.preventDefault();
 
 
         const form = event.target;
-        const name = form.name.value;
+        const userName = form.userName.value;
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
         const photo = form.photo.value;
+
+        console.log(userName,photo)
+
         if (!password === confirmPassword) {
             setErrors('password dosnt match')
             return
@@ -37,25 +43,33 @@ const Ragister = () => {
                 setErrors('')
                 setMassage('Go to Login')
                 form.reset()
-
+                handleUpdateUserProfile(userName, photo)
+                navigate( from, {replace: true})
 
             })
             .catch((error) => {
                 setErrors(error.message)
             })
+        }
 
-        profileUpgrade(name, photo)
-            .then((result) => {
-                console.log(result)
-            })
+            const handleUpdateUserProfile = (name, photoURL) =>{
+                const profile = {
+                    displayName: name,
+                    photoURL: photoURL
+                }
+                profileUpgrade(profile)
+            .then(() => {})
             .catch((err) => {
                 console.log(err.message)
             })
+            }
+
+        
 
 
 
 
-    }
+    
 
 
 
@@ -66,7 +80,7 @@ const Ragister = () => {
             <form onSubmit={handelRagister} className='text-center  bg-slate-300 p-20'>
                 <h1 className='text-3xl mb-4'>Ragister</h1>
                 <div className="">
-                    <input type="text" name='name' placeholder="Your Name" className="input w-full max-w-xs border border-spacing-11 " />
+                    <input type="text" name='userName' placeholder="Your Name" className="input w-full max-w-xs border border-spacing-11 " />
                     <br />
                     <input type="email" name='email' placeholder="Your Email" className="input w-full max-w-xs mt-10" required />
                     <br />

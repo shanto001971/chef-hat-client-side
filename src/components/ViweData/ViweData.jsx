@@ -22,7 +22,7 @@ const ViweData = ({ chef }) => {
                 <li className='flex gap-2'><FaThumbsUp /> {likes}</li>
 
                 <div className="card-actions justify-end ">
-                    <button className="btn btn-primary w-full mt-5"><Link to={`/data/${id}`}>View Recipes</Link></button>
+                <Link to={`/data/${id}`} className='w-full'><button className="btn btn-primary w-full mt-5">View Recipes</button></Link>
                 </div>
             </div>
         </div>
